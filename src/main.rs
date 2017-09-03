@@ -22,6 +22,13 @@ struct SearchQuery {
     q: String
 }
 
+#[derive_FromForm]
+#[allow(dead_code)]
+struct DetailsQuery {
+    channel: String,
+    fields: String
+}
+
 #[get("/")]
 fn index() {
     print!("index!")
@@ -75,12 +82,78 @@ fn snap_search(search: SearchQuery) -> Content<Json> {
     Content(ContentType::new("application", "hal+json"), Json(r))
 }
 
+#[get("/snaps/details/<snap>?<details>")]
+fn snap_details(snap: String, details: DetailsQuery) -> Content<Json> {
+    let r = json!(
+        {
+            "anon_download_url": "https://api.snapcraft.io/api/v1/snaps/download/zn48fzkECo1HSsH9AOS8CAWNwO0lZVhK_3.snap",
+            "architecture": ["amd64"],
+            "binary_filesize": 1609728,
+            "channel": "edge",
+            "channel_maps_list": [
+                {
+                    "architecture": "amd64",
+                    "map": [
+                        {
+                            "channel": "stable",
+                            "info": null
+                        },
+                        {
+                            "channel":
+                            "candidate",
+                            "info": null
+                        },
+                        {
+                            "channel": "beta",
+                            "info": null
+                        },
+                        {
+                            "binary_filesize": 1609728,
+                            "channel": "edge",
+                            "confinement": "strict",
+                            "epoch": "0",
+                            "info": "released",
+                            "revision": 3,
+                            "version": "0+git.02bf65b"
+                        }],
+                    "track":"latest"
+                }],
+            "confinement":"strict",
+            "content":"application",
+            "deltas":[],
+            "description": format!("Snap: {} Channel: {}", snap, details.channel),
+            "developer_id":"ixIKmdMaUVa6JDwEaVTIIgQJOq9ghsjH",
+            "download_sha3_384":"ec1ba04e87d8af40b617fb2668093c90171edca9834fef3c14ad91d26b8dc98f2b67a4dc0f049d2a0deb5d49abc886ce",
+            "download_url":"https://api.snapcraft.io/api/v1/snaps/download/zn48fzkECo1HSsH9AOS8CAWNwO0lZVhK_3.snap",
+            "epoch":"0",
+            "icon_url": null,
+            "last_updated":"2017-07-03T22:38:50.066730+00:00",
+            "origin":"nsg",
+            "package_name":"homer-nsg",
+            "prices":{},
+            "private":false,
+            "publisher":"Stefan Berggren",
+            "ratings_average":0.0,
+            "revision":3,
+            "screenshot_urls":[],
+            "snap_id":"zn48fzkECo1HSsH9AOS8CAWNwO0lZVhK",
+            "summary":"nsg's Home Automation API/System",
+            "support_url":"",
+            "title":"homer-nsg",
+            "version":"0+git.02bf65b"
+        }
+    );
+
+    Content(ContentType::new("application", "hal+json"), Json(r))
+}
+
 fn main() {
     rocket::ignite()
         .mount("/", routes![
                index,
                snap_metadata,
-               snap_search
+               snap_search,
+               snap_details
         ])
         .launch();
 }
