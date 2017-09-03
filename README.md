@@ -16,19 +16,19 @@ snaps with working channels and automatic updates.
 
 Implement `/snaps/search` endpoint, no need to support all options.
 
-* [x] (moc) GET /snaps/search?confinement=..&fields=..&q=..
-* [ ]       GET /snaps/search?confinement=..&fields=..&q=..
-* [x] (moc) GET /snaps/search?confinement=..&fields=..&section=..&q=..
-* [ ]       GET /snaps/search?confinement=..&fields=..&section=..&q=..
+* [x] GET /snaps/search?confinement=..&fields=..&q=.. (moc)
+* [ ] GET /snaps/search?confinement=..&fields=..&q=..
+* [x] GET /snaps/search?confinement=..&fields=..&section=..&q=.. (moc)
+* [ ] GET /snaps/search?confinement=..&fields=..&section=..&q=..
 
 ## info
 
 Implement `/snaps/details/<name>`
 
-* [x] (moc) GET /snaps/details/<name>?channel=...&fields=...
-* [ ]       GET /snaps/details/<name>?channel=...&fields=...
+* [x] GET /snaps/details/<name>?channel=...&fields=... (moc)
+* [ ] GET /snaps/details/<name>?channel=...&fields=...
 
 ## install
 
-* [ ] (moc) ?
-* [ ]       ?
+* [ ] ? (moc)
+* [ ] ?
