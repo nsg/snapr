@@ -11,7 +11,8 @@ extern crate rocket;
 use rocket_contrib::Json;
 use rocket::response::content::Content;
 use rocket::http::ContentType;
-
+use rocket::response::NamedFile;
+use std::path::{Path, PathBuf};
 
 #[derive_FromForm]
 #[allow(dead_code)]
@@ -32,6 +33,12 @@ struct DetailsQuery {
 #[get("/")]
 fn index() {
     print!("index!")
+}
+
+#[get("/file/<file..>")]
+fn files(file: PathBuf) -> Option<NamedFile> {
+    print!("file: {:?}, files: {:?}", file, Path::new("/var/snapr/"));
+    NamedFile::open(Path::new("/var/snapr/").join(file)).ok()
 }
 
 #[post("/snaps/metadata", format = "application/json", data = "<body>")]
@@ -86,9 +93,9 @@ fn snap_search(search: SearchQuery) -> Content<Json> {
 fn snap_details(snap: String, details: DetailsQuery) -> Content<Json> {
     let r = json!(
         {
-            "anon_download_url": "https://api.snapcraft.io/api/v1/snaps/download/zn48fzkECo1HSsH9AOS8CAWNwO0lZVhK_3.snap",
+            "anon_download_url": "http://localhost:8000/file/hello-world.snap",
             "architecture": ["amd64"],
-            "binary_filesize": 1609728,
+            "binary_filesize": 20480,
             "channel": "edge",
             "channel_maps_list": [
                 {
@@ -123,8 +130,8 @@ fn snap_details(snap: String, details: DetailsQuery) -> Content<Json> {
             "deltas":[],
             "description": format!("Snap: {} Channel: {}", snap, details.channel),
             "developer_id":"ixIKmdMaUVa6JDwEaVTIIgQJOq9ghsjH",
-            "download_sha3_384":"ec1ba04e87d8af40b617fb2668093c90171edca9834fef3c14ad91d26b8dc98f2b67a4dc0f049d2a0deb5d49abc886ce",
-            "download_url":"https://api.snapcraft.io/api/v1/snaps/download/zn48fzkECo1HSsH9AOS8CAWNwO0lZVhK_3.snap",
+            "download_sha3_384":"40e1ef7f4e08e628f92938dc5029f223d2613740d37fa2a5e773eaf30f91bca5687f7cd4be9a590c562c728b35bfbfe6",
+            "download_url":"http://localhost:8000/file/hello-world.snap",
             "epoch":"0",
             "icon_url": null,
             "last_updated":"2017-07-03T22:38:50.066730+00:00",
@@ -153,7 +160,8 @@ fn main() {
                index,
                snap_metadata,
                snap_search,
-               snap_details
+               snap_details,
+               files
         ])
         .launch();
 }

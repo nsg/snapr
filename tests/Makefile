@@ -9,6 +9,7 @@ patch:
 		bash -c 'echo SNAPPY_FORCE_CPI_URL="http://localhost:8000" >> /etc/environment'
 	lxc exec snapr-test -- apt update
 	lxc exec snapr-test -- apt install -y squashfuse
+	#lxc exec snapr-test -- snap install core # remove this when we have proxy support
 	lxc exec snapr-test -- systemctl restart snapd
 
 push: build dummy_0.1_amd64.snap
