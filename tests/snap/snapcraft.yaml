@@ -1,0 +1,14 @@
+---
+
+name: dummy
+version: '0.1'
+summary: A dummy snap for tests
+description: |
+  A nice description
+
+grade: stable
+confinement: strict
+
+parts:
+  dummy:
+    plugin: nil
