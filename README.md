@@ -10,6 +10,8 @@ store.
 With this I hope to implement some of the endpoints to search and install
 snaps with working channels and automatic updates.
 
+> This is not usable at the moment
+
 ## Endpoints
 
 ## find
