@@ -130,7 +130,7 @@ fn snap_details(snap: String, details: DetailsQuery) -> Content<Json> {
             "deltas":[],
             "description": format!("Snap: {} Channel: {}", snap, details.channel),
             "developer_id":"ixIKmdMaUVa6JDwEaVTIIgQJOq9ghsjH",
-            "download_sha256":"717cb58bd9c55e421a9a02cab6cb836c26d59673598c76068a428a1b91c7215531ebd983da0e2fe708f867bc13b2986af1d6f71e00b7c9ba399ba7e333a59723",
+            "download_sha512":"717cb58bd9c55e421a9a02cab6cb836c26d59673598c76068a428a1b91c7215531ebd983da0e2fe708f867bc13b2986af1d6f71e00b7c9ba399ba7e333a59723",
             "download_url":"http://localhost:8000/file/hello-world.snap",
             "epoch":"0",
             "icon_url": null,
