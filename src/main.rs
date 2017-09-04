@@ -115,12 +115,12 @@ fn snap_details(snap: String, details: DetailsQuery) -> Content<Json> {
                             "info": null
                         },
                         {
-                            "binary_filesize": 1609728,
+                            "binary_filesize": 20480,
                             "channel": "edge",
                             "confinement": "strict",
                             "epoch": "0",
                             "info": "released",
-                            "revision": 3,
+                            "revision": 27,                 // sync
                             "version": "0+git.02bf65b"
                         }],
                     "track":"latest"
@@ -130,20 +130,20 @@ fn snap_details(snap: String, details: DetailsQuery) -> Content<Json> {
             "deltas":[],
             "description": format!("Snap: {} Channel: {}", snap, details.channel),
             "developer_id":"ixIKmdMaUVa6JDwEaVTIIgQJOq9ghsjH",
-            "download_sha3_384":"40e1ef7f4e08e628f92938dc5029f223d2613740d37fa2a5e773eaf30f91bca5687f7cd4be9a590c562c728b35bfbfe6",
+            "download_sha256":"717cb58bd9c55e421a9a02cab6cb836c26d59673598c76068a428a1b91c7215531ebd983da0e2fe708f867bc13b2986af1d6f71e00b7c9ba399ba7e333a59723",
             "download_url":"http://localhost:8000/file/hello-world.snap",
             "epoch":"0",
             "icon_url": null,
             "last_updated":"2017-07-03T22:38:50.066730+00:00",
             "origin":"nsg",
-            "package_name":"homer-nsg",
+            "package_name":"hello-world",                   // sync
             "prices":{},
             "private":false,
             "publisher":"Stefan Berggren",
             "ratings_average":0.0,
-            "revision":3,
+            "revision":27,                                  // sync
             "screenshot_urls":[],
-            "snap_id":"zn48fzkECo1HSsH9AOS8CAWNwO0lZVhK",
+            "snap_id":"buPKUD3TKqCOgLEjjHx5kSiCpIs5cMuQ",   // sync
             "summary":"nsg's Home Automation API/System",
             "support_url":"",
             "title":"homer-nsg",
